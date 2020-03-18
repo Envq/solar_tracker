@@ -25,12 +25,13 @@ int compare_photores(const double ADC_VAL) {
 
 
 // STEP MOTOR #############################################
-StepperMotor::StepperMotor(const int PHASEA1, const int PHASEB1,
-                           const int PHASEA2, const int PHASEB2) {
-    _phaseA1 = PHASEA1;
-    _phaseB1 = PHASEB1;
-    _phaseA2 = PHASEA2;
-    _phaseB2 = PHASEB2;
+StepperMotor::StepperMotor(const int A, const int B, const int C, const int D,
+                           const bool DEBUG) {
+    _phaseA1 = A;
+    _phaseB1 = B;
+    _phaseA2 = C;
+    _phaseB2 = D;
+    _debug = DEBUG;
     _counter = 0;
     Serial.println("START!");
 }
@@ -75,13 +76,17 @@ void StepperMotor::activePhase(const int phase) {
 }
 
 void StepperMotor::moveCW() {
+    if (_debug)
+        Serial.println(_counter);
     activePhase(_counter);
     _counter++;
-    _counter = _counter == 5 ? 0 : _counter;
+    _counter = _counter == 4 ? 0 : _counter;
 }
 
 void StepperMotor::moveCCW() {
+    if (_debug)
+        Serial.println(_counter);
     activePhase(_counter);
     _counter--;
-    _counter = _counter == -1 ? 4 : _counter;
+    _counter = _counter == -1 ? 3 : _counter;
 }

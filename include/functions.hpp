@@ -13,15 +13,16 @@ int compare_photores(const double ADC_VAL);
 
 class StepperMotor {
   private:
-    int _phaseA1; // _A
-    int _phaseB1; // _B
-    int _phaseA2; // _C
-    int _phaseB2; // _D
+    int _phaseA1;  // _A
+    int _phaseB1;  // _B
+    int _phaseA2;  // _C
+    int _phaseB2;  // _D
+    bool _debug;
     int _counter;
 
   public:
-    StepperMotor(const int PHASEA1, const int PHASEB1,
-                           const int PHASEA2, const int PHASEB2);
+    StepperMotor(const int A, const int B, const int C, const int D,
+                 const bool DEBUG);
 
     void activePhase(const int phase);
 

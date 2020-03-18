@@ -2,27 +2,28 @@
 
 // Pins
 const int PIN_PHOTORES = A0;
-const int MOTOR1 = 8;   // PHASEA1
-const int MOTOR2 = 9;   // PHASEB1
-const int MOTOR3 = 10;  // PHASEA2
-const int MOTOR4 = 11;  // PHASEB2
+const int MOTOR_IN1 = 8;   // PHASEA1 - A
+const int MOTOR_IN2 = 9;   // PHASEB1 - B
+const int MOTOR_IN3 = 10;  // PHASEA2 - C
+const int MOTOR_IN4 = 11;  // PHASEB2 - D
 
 // Config
 const int DELAY_TRACKER = 3000;
-const int DELAY_MOTOR = 5;
+const int DELAY_MOTOR_IN = 5;
+const bool DEBUG = true;
 
 // Variables
 double ADC_val = 0.0;
 int direction = 0;
-StepperMotor motor(MOTOR1, MOTOR2, MOTOR3, MOTOR4);
+StepperMotor motor(MOTOR_IN1, MOTOR_IN2, MOTOR_IN3, MOTOR_IN4, DEBUG);
 
 
 void setup() {
     pinMode(PIN_PHOTORES, INPUT);
-    pinMode(MOTOR1, OUTPUT);
-    pinMode(MOTOR2, OUTPUT);
-    pinMode(MOTOR3, OUTPUT);
-    pinMode(MOTOR4, OUTPUT);
+    pinMode(MOTOR_IN1, OUTPUT);
+    pinMode(MOTOR_IN2, OUTPUT);
+    pinMode(MOTOR_IN3, OUTPUT);
+    pinMode(MOTOR_IN4, OUTPUT);
     Serial.begin(9600);
 }
 
@@ -36,8 +37,7 @@ void loop() {
             motor.moveCW();
         else
             motor.moveCCW();
-        delay(DELAY_MOTOR);
+        delay(DELAY_MOTOR_IN);
     }
-    Serial.println("FINE");
     delay(DELAY_TRACKER);
 }
