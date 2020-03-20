@@ -8,8 +8,7 @@ const int BIT_ADC = 1023;
 const double VOLTS_PER_BIT = static_cast<double>(MAX_VOLT) / BIT_ADC;
 
 
-int compare_photores(const double ADC_VAL, const double EPSILON,
-                     const bool DEBUG);
+int compare_photores(const double ADC_VAL, const bool DEBUG);
 
 
 class StepperMotor {

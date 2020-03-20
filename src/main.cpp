@@ -8,10 +8,9 @@ const int MOTOR_IN3 = 10;  // PHASEA2 - C
 const int MOTOR_IN4 = 11;  // PHASEB2 - D
 
 // Config
-const double EPSILON_RES = 0.10;
 const int DELAY_TRACKER = 3000;
 const int DELAY_MOTOR_IN = 5;
-const bool DEBUG_RES = false;
+const bool DEBUG_RES = true;
 const bool DEBUG_MOTOR = false;
 
 // Variables
@@ -30,8 +29,8 @@ void setup() {
 }
 
 void loop() {
-    while ((direction = compare_photores(analogRead(PIN_PHOTORES), EPSILON_RES,
-                                         DEBUG_RES)) != 0) {
+    while ((direction =
+                compare_photores(analogRead(PIN_PHOTORES), DEBUG_RES)) != 0) {
         if (direction == 1)
             motor.moveCW();
         else

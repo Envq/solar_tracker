@@ -11,33 +11,44 @@
 */
 
 const double MIDDLE_ADC = MAX_VOLT / 2.0;
-double inc = 0;
+const double INC = 0.01;
+double epsilon = 0.0;
+int last = 0;
 
-int compare_photores(const double ADC_VAL, const double EPSILON,
-                     const bool DEBUG) {
+int compare_photores(const double ADC_VAL, const bool DEBUG) {
     double ADC_VOLT = ADC_VAL * VOLTS_PER_BIT;
     int res;
     if (ADC_VOLT < MIDDLE_ADC) {
-        if (ADC_VOLT > MIDDLE_ADC - EPSILON) {
+        if (ADC_VOLT > MIDDLE_ADC - epsilon) {
             res = 0;
+            epsilon = 0;
+            last = 0;
         } else {
+            last = res;
             res = -1;
+            if (last != res)
+                epsilon += INC;
         }
     } else {
-        if (ADC_VOLT < MIDDLE_ADC + EPSILON) {
+        if (ADC_VOLT < MIDDLE_ADC + epsilon) {
             res = 0;
+            epsilon = 0;
+            last = 0;
         } else {
+            last = res;
             res = 1;
+            if (last != res)
+                epsilon += INC;
         }
     }
 
     if (DEBUG) {
         Serial.print("VOLT: ");
         Serial.println(ADC_VOLT);
-        Serial.print("EPS+: ");
-        Serial.println((MIDDLE_ADC + EPSILON));
-        Serial.print("EPS-: ");
-        Serial.println((MIDDLE_ADC - EPSILON));
+        Serial.print("EPSILON: ");
+        Serial.println(epsilon, 4);
+        Serial.print("LAST: ");
+        Serial.println(last);
         Serial.print("RES: ");
         Serial.println(res);
         Serial.println("------");
