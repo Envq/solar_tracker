@@ -11,37 +11,44 @@
 */
 
 const double MIDDLE_ADC = MAX_VOLT / 2.0;
-const double INC = 0.01;
+int compare_photores_fix(const double ADC_VAL, const double EPSILON,
+                         const bool DEBUG) {
+    double ADC_VOLT = ADC_VAL * VOLTS_PER_BIT;
+    int res;
+    if (ADC_VOLT < MIDDLE_ADC - EPSILON)
+        res = -1;
+    else if (ADC_VOLT > MIDDLE_ADC + EPSILON)
+        res = 1;
+    else
+        res = 0;
+    if (DEBUG)
+        Serial.println(res);
+    return res;
+}
+
+
 double epsilon = 0.0;
 int last = 0;
 
-int compare_photores(const double ADC_VAL, const bool DEBUG) {
+int compare_photores_var(const double ADC_VAL, const double INCREMENT,
+                         const bool DEBUG) {
     double ADC_VOLT = ADC_VAL * VOLTS_PER_BIT;
     int res;
-    if (ADC_VOLT < MIDDLE_ADC) {
-        if (ADC_VOLT > MIDDLE_ADC - epsilon) {
-            res = 0;
-            epsilon = 0;
-            last = 0;
-        } else {
-            last = res;
-            res = -1;
-            if (last != res)
-                epsilon += INC;
-        }
+    if (ADC_VOLT < MIDDLE_ADC - epsilon) {
+        res = -1;
+        if (last != res)
+            epsilon += INCREMENT;
+        last = res;
+    } else if (ADC_VOLT > MIDDLE_ADC + epsilon) {
+        res = 1;
+        if (last != res)
+            epsilon += INCREMENT;
+        last = res;
     } else {
-        if (ADC_VOLT < MIDDLE_ADC + epsilon) {
-            res = 0;
-            epsilon = 0;
-            last = 0;
-        } else {
-            last = res;
-            res = 1;
-            if (last != res)
-                epsilon += INC;
-        }
+        res = 0;
+        last = res;
+        epsilon = 0.0;
     }
-
     if (DEBUG) {
         Serial.print("VOLT: ");
         Serial.println(ADC_VOLT);
@@ -51,6 +58,8 @@ int compare_photores(const double ADC_VAL, const bool DEBUG) {
         Serial.println(last);
         Serial.print("RES: ");
         Serial.println(res);
+        Serial.print("DIRECTION: ");
+        Serial.println((res == -1) ? "C-CLK" : (res == 1) ? "CLK" : "STOP");
         Serial.println("------");
     }
     return res;
