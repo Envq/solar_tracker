@@ -1,10 +1,12 @@
-\documentclass[11pt,oneside,a4paper]{article}
+\documentclass[12pt,oneside,a4paper]{article}
 
 \title{\textbf{Solar Tracker}}
 \author{Enrico Sgarbanti - VR446095}
 
 \usepackage{graphicx}
 \usepackage{wrapfig}
+% \usepackage{url}
+\usepackage{hyperref}
 \usepackage[italian]{babel}
 \usepackage[utf8]{inputenc}
 
@@ -27,13 +29,14 @@ Per la creazione di questo dispositivo sono state utilizzate varie competenze:
 
 \subsection{Partitore di tensione}
 
-\subsection{Motore 4 fasi}
+\subsection{Motore 2 fasi}
 
 \subsection{Arduino}
+Arduino\cite{Arduino}
 - ADC
 
 \section{Solar Tracker}
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.5\textwidth]{figures/modello_solar_tracker}
     \caption{Struttura esemplificativa.}
@@ -47,6 +50,7 @@ Il dispositivo è stato realizzato con:
     \item 1x ULN2003 driver board
     \item 2x Photoresistor GL5537
 \end{itemize}
+Tutti i componenti sono all'interno di una scatola tranne le fotoresistenze che si trovano nella parte superiore separate da un divisorio. La scelta di mettere tutti i componenti all'interno del case è stata fatta per permettere la completa rotazione, cosa che non si sarebbe potuto garantire altrimenti a causa dei cavi. (Il motore scelto non è il più adatto, ma essendo un prototipo a scopo didattico si è deciso di utilizzare quello già visto a lezione)
 
 % \subsection{Considerazioni}
 % Avendo utilizzato un solo motore è importante che la luce si sposti solo attorno alla normale al piano, al fine di vedere al meglio 
@@ -74,7 +78,8 @@ Aggiungendo un altro motore è possibile estendere la ricerca della posa con pi�
 Grazie a questo miglioramento è possibile realizzare un dispositivo che permetta ad un pannello solare di essere posizionato sempre nella posizione che dia la maggior efficienza.
 
 
+\bibliographystyle{ieeetr}
 \bibliography{biblio}
-\appendix
+
 
 \end{document}
