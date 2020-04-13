@@ -30,7 +30,67 @@ L'obiettivo è riuscire a realizzare un dispositivo che sia in grado di ruotare 
 Per la creazione di questo dispositivo sono state utilizzate varie competenze:
 
 
-\subsection{Fotoresistenze}Le fotoresistenze hanno una resistenza inversamente proporzionale alla luce quindi maggiore è la luce e maggiore sarà il voltaggio letto (grazie alla legge di ohm V=RI).
+\subsection{Fotoresistenze}
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figures/fotoresistenze.jpg}
+    \caption{Partitore di tensione.}
+\end{figure}
+
+
+\subsubsection{Introduzione}
+Le fotoresistenze\cite{Photoresistor1}\cite{Photoresistor2} sono un componente elettronico la cui resistenza è inversamente proporzionale alla quantità di luce che lo colpisce, mentre la corrente elettrica che transita attraverso tale componente è proporzionale all'intensità di una sorgente luminosa.
+\\Le fotoresistenze sono facili da usare e la loro sensibilità dipende dalla lunghezza d'onda della luce incidente.
+\\Sebbene per questi fotoresistori venga utilizzato un materiale semiconduttore, essi sono dispositivi puramente passivi perché non possiedono una giunzione PN, e questo li separa da altri fotorilevatori come fotodiodi e fototransistori.
+
+
+\subsubsection{Funzionamento}
+I concetti alla base del funzionamento sono:
+\begin{itemize}
+    \item 1) Una corrente elettrica consiste nel movimento di elettroni all'interno di un materiale.
+    \item 2) I buoni conduttori hanno un gran numero di elettroni liberi che possono spostarsi in una data direzione sotto l'azione di una differenza di potenziale.
+    \item 3) Gli isolanti ad alta resistenza hanno pochissimi elettroni liberi, quindi è difficile farli muovere cioè far scorrere una corrente.
+    \item 4) Una fotoresistenza è realizzata con del materiale semiconduttore ad alta resistenza, dovuta al fatto che ci sono pochissimi elettroni liberi di muoversi (la stragrande maggioranza degli elettroni è bloccata nel reticolo cristallino e incapace di muoversi).
+\end{itemize}
+
+Quando la luce incidente sul semiconduttore i fotoni vengono assorbiti dal reticolo del semiconduttore fornendo agli elettroni legati abbastanza energia da saltare nella banda di conduzione. Gli elettroni liberi risultanti (e le rispettive lacune) conducono l'elettricità, riducendo così la resistenza (effetto fotoconduttivo). Quando la luce incidente viene interrotta i portatori di carica in eccesso si ricombinano riportando la conducibilità del semiconduttore al suo valore iniziale in condizioni di oscurità. 
+
+
+\subsubsection{Struttura}
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figures/fotoresistenza-struttura1.png}
+    \caption{Partitore di tensione.}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figures/fotoresistenza-struttura2.png}
+    \caption{Partitore di tensione.}
+\end{figure}
+
+La regione attiva del semiconduttore viene normalmente leggermente drogata e depositata su un substrato semiisolante.
+\\Normalmente la fotoresistenza è formata da un substrato semiisolante, sul quale è depositato il semiconduttore (solitamente leggermente drogato). Sopra di esso vi è posta una superficie metallica la quale è però divisa a metà dal semiconduttore con un ''interdigital pattern`` per aumentare l'area esposta alla luce.
+\\I semiconduttori tipicamente usati sono CdSe, CdS, CdTe, InSb, InP, PbS, PbSe, Ge, Is, GaAs. Ogni materiale offre proprietà diverse in termini di lunghezza d'onda della sensibilità, ecc.
+\\Si parla di \textbf{fotoresistenze intrinseche} quando vengono utilizzano materiali semiconduttori non drogati tra cui silicio o germanio. I fotoni cadono sugli elettroni di eccitazione spostandoli dalla banda di valenza alla banda di conduzione. Di conseguenza, questi elettroni sono liberi di condurre l'elettricità.
+\\Più luce cade sul dispositivo, più elettroni vengono liberati, maggiore è il livello di conduttività, e minore sarà il livello di resistenza.
+\\Si parla invece di \textbf{fotoresistenze estrinseche} quando vengono utilizzati materiali semiconduttori drogati con impurità. Queste impurità o droganti creano una nuova banda di energia sopra la banda di valenza esistente. Di conseguenza, gli elettroni hanno bisogno di meno energia per trasferirsi nella banda di conduzione.
+
+
+\subsubsection{Dipendenza dalla frequenza}
+Le fotoresistenze sono sensibili alla variazione di lunghezza d'onda della luce che le colpisce. Ciò dipende dal tipo 
+
+In base al materiale utilizzato le fotoresistenze reagiscono in modo diverso alla luce di diverse lunghezze d'onda.
+\\Le fotoresistenze estrinseche tendono ad essere più sensibili alla luce a lunghezza d'onda più lunga e possono essere usati per gli infrarossi. Tuttavia, quando si lavora con gli infrarossi, è necessario prestare attenzione per evitare l'accumulo di calore causato.
+
+
+\subsubsection{Latenza}
+Un aspetto importante associato alle fotoresistenze è quello della latenza cioè il tempo impiegato dal componente per rispondere ad un qualsiasi cambiamento. La velocità con cui cambia la resistenza è chiamata \textbf{resistence recovery rate}.
+\\ Normalmente la fotoresistenza risponde entro poche decine di millisecondi quando la luce viene applicata dopo l'oscurità totale, ma quando la luce viene rimossa può richiedere fino a un secondo circa affinché la resistenza raggiunga il suo livello finale. Per questo motivo la fotoresistenza non è una buona scelta dove ci sono valori di cambiamento ragionevolmente rapidi di luce. Tuttavia, quando i cambiamenti di luce avvengono per un periodo di tempo, sono più che adeguati.
+
+
+\subsubsection{Applicazioni di fotoresistenza}
+Essendo dispositivi semplici economici e robusti, le fotoresistenze sono utilizzate in diverse applicazioni. Alcuni esempi di applicazioni sono sistemi per il controllo dell'illuminazione, lampioni, allarmi antifurto, raiosveglie,  esposimetri...
 
 
 \subsection{Partitore di tensione}
