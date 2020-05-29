@@ -1,8 +1,9 @@
 # Solar tracker 1 axis
-A simple solar tracker in Arduino Nano
+This is my implementation of a simple solar tracker in Arduino Nano for "Electronic devices and sensors" Course
 
 
 ## Schematic:
+0. Arduino Nano
 
 1. MOTOR:
     - 5V --> MOTOR+
